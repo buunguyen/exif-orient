@@ -1,0 +1,21 @@
+{
+  "name": "exif-orient",
+  "version": "0.0.1",
+  "description": "Library to orient images based on their EXIF orientation",
+  "main": "exif-orient.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/buunguyen/exif-orient.git"
+  },
+  "author": "Buu Nguyen <buunguyen@gmail.com> (https://github.com/buunguyen)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/buunguyen/exif-orient/issues"
+  },
+  "homepage": "https://github.com/buunguyen/exif-orient#readme",
+  "keywords": [
+    "exif",
+    "exif orientation",
+    "image orientation"
+  ]
+}

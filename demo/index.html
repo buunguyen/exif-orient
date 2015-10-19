@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+  <title>exif-orient demo</title>
+  <style>
+    div {
+      width: 50%;
+    }
+    .not-oriented {
+      float: left;
+    }
+    .oriented {
+      float: right;
+    }
+  </style>
+  <script src="http://rawgit.com/exif-js/exif-js/master/exif.js"></script>
+  <script src="http://rawgit.com/buunguyen/exif-orient/master/exif-orient.js"></script>
+  <script>
+    imagesNoOriented(getImages(), function (canvases) {
+      append(canvases, 'Original images', 'not-oriented')
+    })
+    imagesOriented(getImages(), function (canvases) {
+      append(canvases, 'Images fixed with exif-orient', 'oriented')
+    })
+
+    function getImages(paths) {
+      return getImagePaths().map(function (path) {
+        var img = new Image()
+        img.src = path
+        return img
+      })
+
+      function getImagePaths() {
+        var paths = []
+        for (var type = 0; type < 2; type++) {
+          for (var idx = 0; idx < 8; idx++) {
+            var path = 'images/' + (type === 0 ? 'Landscape_' : 'Portrait_') + (idx + 1) + '.jpg'
+            paths.push(path)
+          }
+        }
+        return paths
+      }
+    }
+
+    function imagesNoOriented(imgs, cb) {
+      var remained = imgs.length
+      var canvases = []
+
+      imgs.forEach(function (img, idx) {
+        img.onload = function () {
+          var canvas = document.createElement('canvas')
+          var ctx = canvas.getContext('2d')
+          canvas.width = img.naturalWidth
+          canvas.height = img.naturalHeight
+          ctx.drawImage(img, 0, 0)
+          canvases[idx] = canvas
+          if (--remained === 0) {
+            cb(canvases)
+          }
+        }
+      })
+    }
+
+    function imagesOriented(imgs, cb) {
+      var remained = imgs.length
+      var canvases = []
+
+      imgs.forEach(function (img, idx) {
+        img.onload = function () {
+          orientImage(img, function (err, canvas) {
+            canvases[idx] = canvas
+            if (--remained === 0) {
+              cb(canvases)
+            }
+          })
+        }
+      })
+
+      function orientImage(img, cb) {
+        EXIF.getData(img, function () {
+          var orientation = img.exifdata.Orientation
+          exifOrient(img, orientation, cb)
+        })
+      }
+    }
+
+    function append(canvases, desc, className) {
+      var div = document.createElement('div')
+      div.className = className
+
+      var h3 = document.createElement('h3')
+      h3.appendChild(document.createTextNode(desc))
+      div.appendChild(h3)
+
+      canvases.forEach(function (canvas) {
+        div.appendChild(canvas)
+      })
+
+      document.body.appendChild(div)
+    }
+  </script>
+</head>
+<body>
+</body>
+</html>

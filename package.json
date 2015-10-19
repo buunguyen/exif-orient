@@ -1,7 +1,7 @@
 {
   "name": "exif-orient",
-  "version": "0.0.2",
-  "description": "Library to orient images based on their EXIF orientation",
+  "version": "0.0.3",
+  "description": "Library to orient images based on their Exif orientation",
   "main": "exif-orient.js",
   "repository": {
     "type": "git",

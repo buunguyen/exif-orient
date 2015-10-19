@@ -1,4 +1,4 @@
-Orient an image based on its EXIF orientation tag and draw it to a canvas for further processing.
+Orient an image based on its Exif orientation tag and draw it to a canvas for further processing.
 
 [See a demo](http://rawgit.com/buunguyen/exif-orient/master/demo/index.html).
 
@@ -9,7 +9,7 @@ This library exports a single function `exifOrient` (support UMD):
 ```js
 /**
  * @param {HTMLImageElement | String} img - the image element or base64.
- * @param {Number} orientation - the EXIF orientation.
+ * @param {Number} orientation - the Exif orientation.
  * @param {Function} cb (optional) - the callback function.
  * @return {HTMLCanvasElement} a canvas object.
  */
@@ -20,7 +20,7 @@ __Example__
 ```js
 
 // 1. Read orientation tag using exif-js (https://github.com/exif-js/exif-js)
-// Note: can use any EXIF parsing library, exif-js is just an example
+// Note: can use any Exif parsing library, exif-js is just an example
 EXIF.getData(img, function () {
   var orientation = img.exifdata.Orientation
 
@@ -33,6 +33,9 @@ EXIF.getData(img, function () {
 ```
 
 ### Changes
+
+v0.0.3
+* Rename EXIF => Exif
 
 v0.0.2
 * Update README

@@ -9,9 +9,9 @@
 }(this, function () {
 
   /**
-   * Orients an image based on EXIF orientation and draws it on a canvas.
+   * Orients an image based on Exif orientation and draws it on a canvas.
    * @param {HTMLImageElement | String} img - the image element or base64.
-   * @param {Number} orientation - the EXIF orientation.
+   * @param {Number} orientation - the Exif orientation.
    * @param {Function} cb (optional) - the callback function.
    * @return {HTMLCanvasElement} a canvas object.
    */

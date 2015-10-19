@@ -19,6 +19,7 @@
     imagesNoOriented(getImages(), function (canvases) {
       append(canvases, 'Original images', 'not-oriented')
     })
+    
     imagesOriented(getImages(), function (canvases) {
       append(canvases, 'Images fixed with exif-orient', 'oriented')
     })

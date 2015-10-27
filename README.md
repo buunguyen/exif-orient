@@ -2,6 +2,12 @@ Orient an image based on its Exif orientation tag and draw it to a canvas for fu
 
 [See a demo](http://rawgit.com/buunguyen/exif-orient/master/demo/index.html).
 
+Install from NPM or Bower:
+```
+npm install exif-orient --save
+bower install exif-orient --save
+```
+
 ### Usage
 
 This library exports a single function `exifOrient` (support UMD):

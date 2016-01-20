@@ -40,6 +40,9 @@ EXIF.getData(img, function () {
 
 ### Changes
 
+v0.0.4
+* Add semicolon at EOF to be friendly with minifiers
+
 v0.0.3
 * Rename EXIF => Exif
 

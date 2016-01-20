@@ -101,4 +101,4 @@
       ctx.translate((width - height) / 2, -(width - height) / 2)
     }
   }
-}))
+}));

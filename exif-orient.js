@@ -16,11 +16,11 @@
    * @return {HTMLCanvasElement} a canvas object.
    */
   return function exifOrient(img, orientation, cb) {
-    if (typeof orientation !== 'number' || orientation < 1 || orientation > 8) {
-      return cb(new Error('orientation must be a number from 1 to 8'))
-    }
     if (typeof img !== 'string' && !(img instanceof HTMLImageElement)) {
       return cb(new Error('img must be a string or an HTMLImageElement'))
+    }
+    if (typeof orientation !== 'number' || orientation < 1 || orientation > 8) {
+      return cb(new Error('orientation must be a number from 1 to 8'))
     }
 
     cb = cb || Function()

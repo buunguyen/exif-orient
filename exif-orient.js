@@ -55,7 +55,7 @@
       [false, false, -90]  // 8
     ]
 
-    var transform = transforms[orientation - 1]
+    var transform = transforms[orientation - 1] || transforms[0]
     var flipX = transform[0]
     var flipY = transform[1]
     var deg = transform[2]

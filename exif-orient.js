@@ -10,12 +10,19 @@
 
   /**
    * Orients an image based on Exif orientation and draws it on a canvas.
-   * @param {HTMLImageElement | String} img - the image element or base64.
-   * @param {Number} orientation - the Exif orientation.
+   * @param {HTMLImageElement | String} img - the image element, base64 string or URL.
+   * @param {Number} orientation - the Exif orientation: 1-8.
    * @param {Function} cb (optional) - the callback function.
    * @return {HTMLCanvasElement} a canvas object.
    */
   return function exifOrient(img, orientation, cb) {
+    if (typeof orientation !== 'number' || orientation < 1 || orientation > 8) {
+      return cb(new Error('orientation must be a number from 1 to 8'))
+    }
+    if (typeof img !== 'string' && !(img instanceof HTMLImageElement)) {
+      return cb(new Error('img must be a string or an HTMLImageElement'))
+    }
+
     cb = cb || Function()
 
     if (typeof img === 'string') {
@@ -26,11 +33,8 @@
         orient(_img, orientation, cb)
       }
     }
-    else if (img instanceof HTMLImageElement) {
-      orient(img, orientation, cb)
-    }
     else {
-      cb(new Error('Require image or base64 string'))
+      orient(img, orientation, cb)
     }
   }
 

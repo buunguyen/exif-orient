@@ -14,7 +14,7 @@ This library exports a single function `exifOrient` (support UMD):
 
 ```js
 /**
- * @param {HTMLImageElement | String} img - the image element or base64.
+ * @param {HTMLImageElement | String} img - the image element, base64 string or URL.
  * @param {Number} orientation - the Exif orientation.
  * @param {Function} cb (optional) - the callback function.
  * @return {HTMLCanvasElement} a canvas object.
@@ -39,6 +39,9 @@ EXIF.getData(img, function () {
 ```
 
 ### Changes
+
+v0.0.5
+* Add check for orientation argument
 
 v0.0.4
 * Add semicolon at EOF to be friendly with minifiers

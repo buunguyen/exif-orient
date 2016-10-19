@@ -14,12 +14,12 @@
     }
   </style>
   <script src="http://rawgit.com/exif-js/exif-js/master/exif.js"></script>
-  <script src="http://rawgit.com/buunguyen/exif-orient/master/exif-orient.js"></script>
+  <script src="../exif-orient.js"></script>
   <script>
     imagesNoOriented(getImages(), function (canvases) {
       append(canvases, 'Original images', 'not-oriented')
     })
-    
+
     imagesOriented(getImages(), function (canvases) {
       append(canvases, 'Images fixed with exif-orient', 'oriented')
     })

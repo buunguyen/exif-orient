@@ -10,14 +10,14 @@
 
   /**
    * Orients an image based on Exif orientation and draws it on a canvas.
-   * @param {HTMLImageElement | String} img - the image element, base64 string or URL.
+   * @param {HTMLImageElement | HTMLCanvasElement | String} img - the image element, base64 string or URL.
    * @param {Number} orientation - the Exif orientation: 1-8.
    * @param {Function} cb (optional) - the callback function.
    * @return {HTMLCanvasElement} a canvas object.
    */
   return function exifOrient(img, orientation, cb) {
-    if (typeof img !== 'string' && !(img instanceof HTMLImageElement)) {
-      return cb(new Error('img must be a string or an HTMLImageElement'))
+    if (typeof img !== 'string' && !(img instanceof HTMLImageElement) && !(img instanceof HTMLCanvasElement)) {
+      return cb(new Error('img must be a string, an HTMLImageElement or an HTMLCanvasElement'))
     }
     if (typeof orientation !== 'number' || orientation < 1 || orientation > 8) {
       return cb(new Error('orientation must be a number from 1 to 8'))
@@ -66,8 +66,8 @@
 
     var canvas = document.createElement('canvas')
     var ctx = canvas.getContext('2d')
-    var width = img.naturalWidth
-    var height = img.naturalHeight
+    var width = img.naturalWidth || img.width
+    var height = img.naturalHeight || img.height
 
     canvas.width = Math.abs(deg) === 90 ? height : width
     canvas.height = Math.abs(deg) === 90 ? width : height

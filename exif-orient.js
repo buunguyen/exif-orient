@@ -10,7 +10,7 @@
 
   /**
    * Orients an image based on Exif orientation and draws it on a canvas.
-   * @param {HTMLImageElement | HTMLCanvasElement | String} img - the image element, base64 string or URL.
+   * @param {HTMLImageElement | HTMLCanvasElement | String} img - image, canvas, base64 string or URL.
    * @param {Number} orientation - the Exif orientation: 1-8.
    * @param {Function} cb (optional) - the callback function.
    * @return {HTMLCanvasElement} a canvas object.
